@@ -53,7 +53,7 @@ Wiebe-Marten Wijnja
   1. The FintechCoin contract _← ERC20_<!-- .element: class="tiny-text" -->
   2. The Tokensale contract
   3. The Marketplace contract _← Versioned_<!-- .element: class="tiny-text" -->
-- Web-interface, Decentralized Application
+- Web-interface, Decentralized Application, REST-API
 
 
 ---
