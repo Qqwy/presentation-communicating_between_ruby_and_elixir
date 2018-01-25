@@ -246,6 +246,12 @@ body {
   border: 0;
   box-shadow: none; }
 
+.reveal section img.front_page {
+    border: 0;
+    box-shadow: none;
+    height: 100%;
+}
+
 .reveal a img {
   -webkit-transition: all .15s linear;
   -moz-transition: all .15s linear;
