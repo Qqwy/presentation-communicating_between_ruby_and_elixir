@@ -21,20 +21,27 @@ Wiebe-Marten Wijnja
 
 
 ![](just-functions.jpg)
+↑Funny, but only partially true
 
 ---
+
+### General Concept
 
 - OOP: Attributes + Methods
   - Stateful
 - Functional: Data Structures + Functions transforming them
   - Stateless
+  
+
+---
+
 
 ### What are Objects and Classes used for?
 
-- Grouping Functionality (Single Responsibility)
-- Data Structures
-- Composition
-- Inheritance
+1. Grouping Functionality (Single Responsibility)
+2. Data Structures
+3. Composition
+4. Inheritance
 
 ---
 
