@@ -187,6 +187,7 @@ body {
   word-wrap: normal; }
 
 .reveal table {
+    font-size: 0.8em;
   margin: auto;
   border-collapse: collapse;
   border-spacing: 0; }

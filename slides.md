@@ -37,16 +37,17 @@ Marten (Wiebe-Marten Wijnja)
 
 ### Planga: Seamless Chat Service
 
+TODO Planga logo
 ---
 
 ### Why multiple languages/systems?
 
-| Name                | Chat-service                     | Dashboard-service                           |
-|---------------------|----------------------------------|---------------------------------------------|
-| Different end-users | Visitors that chat               | Developers that maintain their chat         |
-| Concurrent users    | Thousands, Millions              | Hundreds, never more than a couple thousand |
-| Downtime            | Immediate problem                | 🤷                                          |
-| Interaction         | Instant push-pull; fast          | REST/CRUD                                   |
+| Name                | Chat-service        | Dashboard-service                           |
+|---------------------|---------------------|---------------------------------------------|
+| Different end-users | Visitors that chat  | Developers that maintain their chat         |
+| Concurrent users    | Thousands, Millions | Hundreds, never more than a couple thousand |
+| Downtime            | Immediate problem   | 🤷                                          |
+| Interaction         | Instant             | Multiple page loads is fine                 |
 
 - Also: self-hosted Open-Source variant!
 
@@ -95,7 +96,7 @@ TODO insert diagram here
 
 ---
 
-### The Past: REST calls to synchronize
+### The Past: REST calls
 
 Simple to set up, but:
 
@@ -109,22 +110,13 @@ Simple to set up, but:
 ### The Present: RabbitMQ
 
 - Push-based: changes get forwarded.
+- Nice: 
+  - Great documentation and tutorials!
+  - Many different configurations of queues
+- Less nice:
+  - Security: Setting up TLS with peer-verification is a _must_ for production systems; difficult to set up.
+    - Terminating proxies (Nginx) to the rescue!
 
-TODO show some code here
-
----
-
-### The Joy of working with RabbitMQ :-)
-
-- Great documentation and tutorials!
-- Many different configurations of queues
-
----
-
-### The less joyful parts...
-
-- Security: Setting up TLS is a _must_ for production systems, but a bit of a hassle.
-  - Terminating proxies (Nginx) to the rescue!
 
 
 ---
@@ -141,12 +133,23 @@ TODO show some code here
 
 ---
 
+TODO Code examples:
+
+- Ruby producer
+- Call sites in Ruby code (after creation/update, at startup)
+
+- Elixir consumer
+- TODO Elixir producer at startup
+
+---
+
 ### The Future: ???
 
 - Multiple Elixir chat-nodes
   - Distributed datastore (Riak or Cassandra)
   - Potential for less communication, since analytics can be taken directly from distributed datastore.
-  - Webhooks, external services to digest/transform messages.
+  
+TODO graphic of long-term app architecture
 
 
 ---
