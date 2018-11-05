@@ -9,90 +9,145 @@ Wifi:<!-- .element: class="tiny-text" -->
 
 ---
 
+Agenda
+
+1. Announcement of Code BEAM Lite Amsterdam
+2. Talk by **Marten**:
+   communicating Ruby <-> Elixir: A multilanguage webapp
+3. Talk by **Marcel**: TBA
+4. Drinks!
+
+---
+
+## Announcements
+
+
+---
+
+
 ![](wm_portrait_cutout_ascii_big.png)
 
-Wiebe-Marten Wijnja
+Marten (Wiebe-Marten Wijnja)
 
 ---
 
-## Object-Oriented to Functional
+## Communicating between Ruby <-> Elixir: Building a multi-language app
 
 ---
 
-
-![](just-functions.jpg)
-↑Funny, but only partially true
+### Planga: Seamless Chat Service
 
 ---
 
-### General Concept
+### Why multiple languages/systems?
 
-- OOP: Attributes + Methods
-  - Stateful
-- Functional: Data Structures + Functions transforming them
-  - Stateless
-  
+| Name                | Chat-service                     | Dashboard-service                           |
+|---------------------|----------------------------------|---------------------------------------------|
+| Different end-users | Visitors that chat               | Developers that maintain their chat         |
+| Concurrent users    | Thousands, Millions              | Hundreds, never more than a couple thousand |
+| Downtime            | Immediate problem                | 🤷                                          |
+| Interaction         | Instant push-pull; fast          | REST/CRUD                                   |
 
----
-
-
-### What are Objects and Classes used for?
-
-1. Grouping Functionality (Single Responsibility)
-2. Data Structures
-3. Composition
-4. Inheritance
+- Also: self-hosted Open-Source variant!
 
 ---
 
-### Grouping Functionality
+#### Elixir for chat-application
 
-- OOP: Classes (Sometimes modules/namespaces are supported)
-- Functional: use Modules
-
----
-
-### Data Structures
-
-- OOP: Objects that only have attributes
-- Functional: Simple data structures that might be nested
-  - Many languages allow you to create your own record datatypes.
+- Scalability
+- Websockets/Phoenix Channels
+- Hot-upgrades
+- Fault-Tolerance
 
 ---
 
-### Composition
+#### Ruby for dashboard-application
 
-- Works the same way in OOP and Functional
-- in OOP, often inheritance is used (although bad style) where Composition ought to be used.
-
----
-
-### Inheritance
-
-- OOP: top-down inheritance.
-
-- In Functional land, two options:
-  - Use a sum type (AKA 'Typed Union')
-    - (A shape is `rectangle position width height | square position width | circle position radius**)
-  - Use ad-hoc polymorphism:
-    - Protocols/Typeclasses/Traits/Interfaces
-    - Behaviours: Similar, but pass around module that knows operations manually.
+- KISS
+- Replacability
+- Rails is very good at building REST CRUD systems
 
 ---
 
-### Referential Transparency
+### Chat Service:
 
-- Current line of code can be understood by ****only looking at the earlier lines in this function**.
-- Refactoring simple
-
-> You wanted a banana but what you got was a gorilla holding the banana and the entire jungle
+- Connection handling of visitors
+- Persisting and forwarding of messages
 
 ---
 
-### Related information
+### Dashboard Service
 
-- [SOLID Design in Elixir - Georgina McFadyen (Presentation on ElixirConf.EU 2018)](https://www.youtube.com/watch?v=eldYot7uxUc)
-- [Translating a C++ parser to Haskell - Gabriel Gonzalez (blog article on Haskell for the Masses)](http://www.haskellforall.com/2017/06/translating-c-parser-to-haskell.html)
+- Account mamangement
+  - Creating new API keys
+  - Disabling old API keys
+  - Enabling webhooks, etc.
+- Analytics
+
+---
+
+### Communicating:
+
+- Chat-service needs to know what API keys are enabled.
+- Dashboard-service needs to know statistics.
+
+TODO insert diagram here
+
+---
+
+### The Past: REST calls to synchronize
+
+Simple to set up, but:
+
+- Security! roll-your-own-encryption?!
+- Pull-based, so CRON?
+  - fetch everything all the time?
+  - Stale info
+
+---
+
+### The Present: RabbitMQ
+
+- Push-based: changes get forwarded.
+
+TODO show some code here
+
+---
+
+### The Joy of working with RabbitMQ :-)
+
+- Great documentation and tutorials!
+- Many different configurations of queues
+
+---
+
+### The less joyful parts...
+
+- Security: Setting up TLS is a _must_ for production systems, but a bit of a hassle.
+  - Terminating proxies (Nginx) to the rescue!
+
+
+---
+
+### Erlang External Term Format (ETF)
+
+- Better fit than JSON, because:
+  - 1:1 mapping of many datatypes between Ruby and Elixir:
+     - Symbols/Atoms
+     - BigNums
+  - Compressed
+  - No weird restrictions on top-level types
+  - Elixir is 'host' system so it should dictate typing.
+
+---
+
+### The Future: ???
+
+- Multiple Elixir chat-nodes
+  - Distributed datastore (Riak or Cassandra)
+  - Potential for less communication, since analytics can be taken directly from distributed datastore.
+  - Webhooks, external services to digest/transform messages.
+
 
 ---
 
