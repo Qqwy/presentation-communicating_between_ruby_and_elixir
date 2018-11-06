@@ -127,7 +127,7 @@ Two applications:
 Simple to set up, but:
 
 - Security! roll-your-own-encryption?!
-- Pull-based, so CRON?
+- Polling-based, so CRON?
   - fetch everything all the time?
   - Stale info
 
