@@ -22,7 +22,7 @@ Agenda
 
 ![](wm_portrait_cutout_ascii_big.png)
 
-Marten (Wiebe-Marten Wijnja)
+Marten (Wiebe-Marten Wijnja**
 
 ---
 
@@ -46,6 +46,8 @@ Marten (Wiebe-Marten Wijnja)
 3. The Past
 4. The Present
 5. The Future
+
+**Ask Questions!**
 
 ---
 
