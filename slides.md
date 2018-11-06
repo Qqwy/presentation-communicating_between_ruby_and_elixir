@@ -11,16 +11,11 @@ Wifi:<!-- .element: class="tiny-text" -->
 
 Agenda
 
-1. Announcement of Code BEAM Lite Amsterdam
+1. Announcements
 2. Talk by **Marten**:
-   communicating Ruby <-> Elixir: A multilanguage webapp
-3. Talk by **Marcel**: TBA
+   communicating Ruby ↔ Elixir: A multilanguage webapp
+3. Talk by **Marcel**: Managing side-effects with Phoenix.PubSub
 4. Drinks!
-
----
-
-## Announcements
-
 
 ---
 
@@ -31,14 +26,55 @@ Marten (Wiebe-Marten Wijnja)
 
 ---
 
-## Communicating between Ruby <-> Elixir: Building a multi-language app
+## Announcements
+
+- Code BEAM Amsterdam
+- Advent of Code
+
+
+---
+
+## Communicating between Ruby ↔ Elixir: Building a multi-language app
+
 
 ---
 
 ### Planga: Seamless Chat Service
 
 TODO Planga logo
+
 ---
+
+- _Existing_ users of your system (no external accounts)
+- Chatting _between_ users
+- Easy to set up, no extra bandwidth or complexity for your server.
+
+---
+
+Two applications:
+
+- Chat Service
+- Dashboard Service
+
+---
+
+### Chat Service:
+
+- Connection handling of visitors
+- Persisting and forwarding of messages
+
+---
+
+### Dashboard Service
+
+- Account mamangement
+  - Creating new API keys
+  - Disabling old API keys
+  - Enabling webhooks, etc.
+- Analytics
+
+---
+
 
 ### Why multiple languages/systems?
 
@@ -70,23 +106,6 @@ TODO Planga logo
 
 ---
 
-### Chat Service:
-
-- Connection handling of visitors
-- Persisting and forwarding of messages
-
----
-
-### Dashboard Service
-
-- Account mamangement
-  - Creating new API keys
-  - Disabling old API keys
-  - Enabling webhooks, etc.
-- Analytics
-
----
-
 ### Communicating:
 
 - Chat-service needs to know what API keys are enabled.
@@ -105,19 +124,28 @@ Simple to set up, but:
   - fetch everything all the time?
   - Stale info
 
+
 ---
 
-### The Present: RabbitMQ
+### The Present: Persistent Messaging
+
+#### RabbitMQ
 
 - Push-based: changes get forwarded.
 - Nice: 
   - Great documentation and tutorials!
   - Many different configurations of queues
 - Less nice:
-  - Security: Setting up TLS with peer-verification is a _must_ for production systems; difficult to set up.
-    - Terminating proxies (Nginx) to the rescue!
+  - Not so clear on how to configure for production
+  
 
+---
 
+### Aside: Security
+
+- Setting up TLS with peer-verification is a _must_ for production systems; difficult to set up.
+- XCA: GUI to make certificates.
+- Terminating proxies (Nginx) to the rescue!
 
 ---
 
