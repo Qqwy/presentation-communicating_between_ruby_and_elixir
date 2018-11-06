@@ -118,10 +118,7 @@ Two applications:
 
 ### Communicating:
 
-- Chat-service needs to know what API keys are enabled.
-- Dashboard-service needs to know statistics.
-
-TODO insert diagram here
+![Communication](communication.svg)
 
 ---
 
