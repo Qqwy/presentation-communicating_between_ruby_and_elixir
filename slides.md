@@ -360,18 +360,22 @@ defmodule Planga.AppSettingsListener do
   - Distributed datastore (Riak or Cassandra)
   - Potential for less communication, since analytics can be taken directly from distributed datastore.
   
-TODO graphic of long-term app architecture
+
+---
+
+![Communication in the future](communication_future.svg)
 
 ---
 
 ### Closing Remarks
 
-1. What is it we're building? **Planga**
-2. Why two languages? **Different Users**
-3. The Past: REST
-4. The Present: RabbitMQ
-5. The Future
-
+- There are other ways of communicating:
+  - Elixir: Ports
+  - Elixir: NIFs
+  - Ruby: Open3 et al.
+- but those are built for same-system host/client.
+- RabbitMQ is great, SysAdmin-stuff is not.
+  - Has Nice GUI!
 
 ---
 
